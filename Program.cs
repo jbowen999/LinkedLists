@@ -4,18 +4,23 @@
     {
         static void Main(string[] args)
         {
-            Node nodeA = new Node();
-            nodeA.Data = 335;
-            Node nodeB = new Node();
-            nodeB.Data = 989;
-            Node nodeC = new Node();
-            nodeC.Data = 322;
-            Node nodeD = new Node();
-            nodeD.Data = 555;
+            LinkedList linkedList = new LinkedList();
+            linkedList.InsertFirst(1);
+            linkedList.InsertFirst(2);
+            linkedList.InsertFirst(4);
+            linkedList.InsertFirst(5);
+            linkedList.InsertFirst(8);
 
-            nodeA.Next = nodeB;
-            nodeB.Next = nodeC;
-            nodeC.Next = nodeD;
+            linkedList.DeleteFirst();
+            linkedList.DeleteFirst();
+
+            linkedList.InsertLast(32);
+
+            linkedList.InsertLast(42);
+
+            linkedList.DisplayList();
+
+
         }
     }
 }
