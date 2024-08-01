@@ -1,57 +1,61 @@
-﻿using System;
+﻿using LinkedLists;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LinkedLists
+namespace LinkedList
 {
-    public class LinkedList
+    public class DoublyLinkedList
     {
         public Node? First { get; set; }
+        public Node? Last { get; set; }
 
         public void InsertFirst(int data)
         {
             // Create the node
             Node newNode = new Node();
-            // Put the data in the node
+            // Put data in the node
             newNode.Data = data;
-            // Put the old node in next
+            // Put the old node into Next
             newNode.Next = First;
-            // Make the first new node
+            if (First != null) First.Previous = newNode;
+            // Make the first the new node
             First = newNode;
+
+            if (First.Next == null) Last = newNode;
         }
+
         public Node DeleteFirst()
         {
-            // Assign the temporaty variable
+            // Assign the temporary variable
             Node temp = First;
-            //Assign the next  dead
+            // Assign the new head
             First = First.Next;
+            if (First != null) First.Previous = null;
+            if (First == null) Last = null;
             return temp;
-
         }
 
         public void DisplayList()
         {
-            Console.WriteLine("Iterating through the list...");
+            Console.WriteLine("Iterating through list...");
             Node current = First;
-            while(current != null)
+            while (current != null)
             {
                 current.DisplayNode();
                 current = current.Next;
-
             }
         }
-        public  void InsertLast(int data)
+
+        public void InsertLast(int data)
         {
-            Node current = First;
-            while (current.Next != null)
-            {
-                current = current.Next;
-            }
+            Node currentLastNode = Last;
             Node newNode = new Node();
             newNode.Data = data;
-            current.Next = newNode;
+            currentLastNode.Next = newNode;
+            Last = newNode;
         }
     }
 }
